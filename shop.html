@@ -1,1 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Banana Shop</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="topbar">
+    <div class="title">🍌 Banana Shop</div>
+    <div class="status">Bananas: <span id="banana-count">0</span> • PPC: <span id="ppc">1</span></div>
+    <a class="shop-link" href="index.html">Back to Game</a>
+  </div>
+
+  <main id="shop">
+    <section class="shop-intro">
+      <p>Only the <strong>next</strong> clicker is fully revealed. Future clickers show a silhouette and price — mystery ahead!</p>
+    </section>
+
+    <section id="shop-items" class="shop-grid"></section>
+
+    <section class="owned-row">
+      <strong>Owned clickers:</strong> <span id="owned-list">None</span>
+    </section>
+  </main>
+
+  <script src="shop.js"></script>
+</body>
+</html>
 
