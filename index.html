@@ -1,1 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Slap the Banana — Game</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="topbar">
+    <div class="title">🍌 Slap the Banana 🍌</div>
+    <div class="status">Bananas: <span id="banana-count">0</span> • PPC: <span id="ppc">1</span></div>
+    <a class="shop-link" href="shop.html">Go to Shop</a>
+  </div>
 
+  <main id="game">
+    <div id="banana-stage">
+      <!-- banana is an inline SVG so no external assets are needed -->
+      <div id="hand" class="hand hidden" aria-hidden="true"></div>
+
+      <svg id="banana" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="banana">
+        <!-- a stylized banana -->
+        <defs>
+          <filter id="bump" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="0.6" result="blur"/>
+            <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+          </filter>
+        </defs>
+
+        <g filter="url(#bump)">
+          <path id="banana-body" d="M10 60 C20 10, 80 5, 150 20 C170 25, 185 45, 155 70 C125 95, 60 110, 10 60 Z"
+            fill="#FFD74A" stroke="#D89E00" stroke-width="3" />
+          <path d="M150 20 C160 22,168 30,160 38" fill="none" stroke="#8B5A00" stroke-width="2" stroke-linecap="round"/>
+          <path d="M14 60 C18 78,32 90,60 96" fill="none" stroke="#E5B800" stroke-width="2" stroke-linecap="round" />
+        </g>
+      </svg>
+    </div>
+
+    <div class="controls">
+      <div class="info">Total Bananas: <span id="banana-count-2">0</span></div>
+      <div class="hint">Click the banana — different hands will slap it! Buy upgrades in the shop to increase bananas per click.</div>
+      <div class="reset-row">
+        <button id="reset-btn" class="muted">Reset Progress</button>
+      </div>
+    </div>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>
