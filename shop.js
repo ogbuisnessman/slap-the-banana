@@ -15,9 +15,9 @@
   // State
   let bananas = loadInt('bananas', 0);
   let ppc = loadInt('ppc', 1);
-  let ownedIndex = loadInt('ownedIndex', -1); // highest index purchased; -1 = none, next-to-buy = ownedIndex + 1
+  let ownedIndex = loadInt('ownedIndex', -1);
 
-  // Build 100 creative names (mix of quirky + generated)
+  // Creative clicker names
   const preset = [
     "Bare Hand","Wooden Spoon","Plastic Spatula","Rubber Chicken","Small Shovel","Steel Pan","Slipper",
     "Banana Peeler","Baseball Bat","Laser Pointer","Toy Hammer","Fly Swatter","Broomstick","Fishing Rod",
@@ -36,18 +36,15 @@
     "Banana Transcendent","Banana Ultimate","Banana Final","Banana Absolute","Banana Legend"
   ];
 
-  // Ensure exactly 100 names
   const names = [];
-  for (let i=0;i<100;i++){
+  for (let i=0; i<100; i++){
     names.push(preset[i] || `Mystery Clicker #${i+1}`);
   }
 
-  // Create items with price scaling and ppc increment
+  // Create items with price scaling and PPC increase
   const items = [];
   let price = 100;
-  for (let i=0;i<100;i++){
-    // multiplier: incremental PPC increase. We'll start small and grow gradually.
-    // We'll use: ppcGain = 1 + Math.floor(i * 0.2) so early ones give small increases while later give larger boosts.
+  for (let i=0; i<100; i++){
     const ppcGain = 1 + Math.floor(i * 0.18);
     items.push({
       id: i,
@@ -55,17 +52,16 @@
       price: price,
       ppcGain: ppcGain
     });
-    price = Math.floor(price * 1.25) + Math.floor(i*2); // grows ~25% each step + tiny bump
+    price = Math.floor(price * 1.25) + Math.floor(i*2);
   }
 
-  // UI update
   function updateTopBar() {
     bananaCountEl.textContent = bananas;
     ppcEl.textContent = ppc;
   }
 
-  // render owned list
   function renderOwned() {
+    if (!ownedListEl) return; // if your HTML doesn't have this element, skip
     if (ownedIndex < 0) {
       ownedListEl.textContent = 'None';
     } else {
@@ -74,7 +70,6 @@
     }
   }
 
-  // Render shop cards
   function renderShop() {
     shopItemsContainer.innerHTML = '';
     items.forEach((item, idx) => {
@@ -83,21 +78,18 @@
 
       const thumb = document.createElement('div');
 
-      // if index <= ownedIndex it is owned -> show small badge
       if (idx <= ownedIndex) {
         thumb.className = 'shop-thumb';
         thumb.textContent = 'OWNED';
         thumb.style.background = 'linear-gradient(180deg,#c8ffd3,#9ff2a7)';
         card.classList.add('owned');
       } else if (idx === ownedIndex + 1) {
-        // next-to-buy: reveal fully
         thumb.className = 'shop-thumb';
-        thumb.textContent = item.name.split(' ')[0]; // short label
+        thumb.textContent = item.name.split(' ')[0];
         thumb.style.background = 'linear-gradient(180deg,#ffd54a,#f1c40f)';
       } else {
-        // Locked silhouette for future
         thumb.className = 'silhouette';
-        thumb.textContent = '???';
+        thumb.textContent = item.name.split(' ')[0]; // show name but as silhouette
       }
 
       const info = document.createElement('div');
@@ -114,7 +106,7 @@
       const ppcNote = document.createElement('div');
       ppcNote.style.color = '#666';
       ppcNote.style.fontSize = '0.9rem';
-      ppcNote.textContent = `+${item.ppcGain} PPC`;
+      ppcNote.textContent = `+${item.ppcGain} Bananas per click`;
 
       info.appendChild(title);
       info.appendChild(priceRow);
@@ -126,14 +118,11 @@
       const buyBtn = document.createElement('button');
       buyBtn.className = 'buy-btn';
       buyBtn.textContent = 'Buy';
-      // Only enable buy button for the next-to-buy card
-      if (idx !== ownedIndex + 1) {
-        buyBtn.disabled = true;
-      } else {
-        // enabled, attach click handler
+
+      buyBtn.disabled = idx !== ownedIndex + 1;
+      if (!buyBtn.disabled) {
         buyBtn.addEventListener('click', () => {
           if (bananas >= item.price) {
-            // purchase
             bananas -= item.price;
             ppc += item.ppcGain;
             ownedIndex = idx;
@@ -143,7 +132,8 @@
             updateTopBar();
             renderShop();
             renderOwned();
-            alert(`You bought ${item.name}! PPC increased by ${item.ppcGain}.`);
+            // console.log for less annoyance
+            console.log(`You bought ${item.name}! Bananas per click increased by ${item.ppcGain}.`);
           } else {
             alert('Not enough bananas!');
           }
@@ -161,7 +151,6 @@
     renderOwned();
   }
 
-  // initial render
   function init() {
     bananas = loadInt('bananas', bananas);
     ppc = loadInt('ppc', ppc);
@@ -169,7 +158,6 @@
     renderShop();
   }
 
-  // storage listener to update if game page changes bananas
   window.addEventListener('storage', (ev) => {
     if (ev.key === 'bananas' || ev.key === 'ppc' || ev.key === 'ownedIndex') {
       bananas = loadInt('bananas', bananas);
@@ -180,9 +168,5 @@
     }
   });
 
-  // save helpers
-  function saveState(){ save('bananas',bananas); save('ppc',ppc); save('ownedIndex',ownedIndex); }
-
-  // init
   init();
 })();
