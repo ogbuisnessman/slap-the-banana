@@ -61,12 +61,49 @@ body {
   padding: 20px;
 }
 
-.shop-item {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
+/* NEW: Shop card container */
+.shop-card {
   border: 2px solid black;
   border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* NEW: Thumbnail styling for owned and next-to-buy */
+.shop-thumb {
+  width: 80px;
+  height: 50px;
+  border-radius: 6px;
+  font-weight: bold;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* NEW: Silhouette styling for locked items */
+.silhouette {
+  width: 80px;
+  height: 50px;
+  border-radius: 6px;
+  background: #ccc;
+  color: transparent;
+  text-shadow: 0 0 5px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  user-select: none;
+  filter: grayscale(100%) opacity(0.4);
+}
+
+/* NEW: Buy button container */
+.buy-row button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .locked {
