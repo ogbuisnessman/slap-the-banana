@@ -9,7 +9,10 @@
 <body>
   <div class="topbar">
     <div class="title">🍌 Slap the Banana 🍌</div>
-    <div class="status">Bananas: <span id="banana-count">0</span> • Bananas per click: <span id="ppc">1</span></div>
+    <div class="status">
+      Bananas: <span id="banana-count">0</span> • 
+      Bananas per click: <span id="ppc">1</span>
+    </div>
     <a class="shop-link" href="shop.html">Go to Shop</a>
   </div>
 
@@ -17,10 +20,7 @@
     <div id="banana-stage">
       <div id="hand" class="hand hidden" aria-hidden="true"></div>
 
-      <svg id="banana" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="banana"
-           style="cursor:pointer;" pointer-events="bounding-box">
-        <!-- Transparent rectangle to make entire SVG clickable -->
-        <rect width="200" height="120" fill="transparent" pointer-events="all" />
+      <svg id="banana" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="banana">
         <defs>
           <filter id="bump" x="-50%" y="-50%" width="200%" height="200%">
             <feGaussianBlur in="SourceGraphic" stdDeviation="0.6" result="blur"/>
