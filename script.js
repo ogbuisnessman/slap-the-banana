@@ -1,12 +1,12 @@
 (() => {
-  const bananaEl = document.getElementById('banana');
+  const bananaStageEl = document.getElementById('banana-stage');
   const bananaCountEl = document.getElementById('banana-count');
   const bananaCountEl2 = document.getElementById('banana-count-2');
   const ppcEl = document.getElementById('ppc');
   const handEl = document.getElementById('hand');
   const resetBtn = document.getElementById('reset-btn');
 
-  const loadInt = (key, fallback=0) => {
+  const loadInt = (key, fallback = 0) => {
     const v = parseInt(localStorage.getItem(key));
     return Number.isFinite(v) ? v : fallback;
   };
@@ -43,7 +43,8 @@
     }, 300);
   }
 
-  bananaEl.addEventListener('click', () => {
+  // Click anywhere in banana-stage
+  bananaStageEl.addEventListener('click', () => {
     bananas += ppc;
     save('bananas', bananas);
     updateUI();
