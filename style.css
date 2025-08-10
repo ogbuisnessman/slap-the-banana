@@ -3,7 +3,105 @@ body {
   background: white;
   color: black;
   margin: 0;
-  padding: 0;
+  padding: 0;body {
+  margin: 0;
+  font-family: sans-serif;
+  background: #fffbe7;
+  color: #333;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffeb99;
+  padding: 10px 15px;
+  font-weight: bold;
+  border-bottom: 3px solid #d8b400;
+}
+
+.title {
+  font-size: 1.4em;
+}
+
+.status {
+  font-size: 1em;
+}
+
+.shop-link {
+  text-decoration: none;
+  background: #ffe066;
+  padding: 5px 10px;
+  border-radius: 6px;
+  border: 2px solid #d8b400;
+  color: #333;
+}
+
+#banana-stage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  background: #fff2cc;
+  cursor: pointer;
+}
+
+#banana {
+  width: 200px;
+  height: auto;
+}
+
+.hand {
+  position: absolute;
+  width: 120px;
+  height: 100px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.hidden {
+  display: none;
+}
+
+.slap {
+  animation: slap-move 0.3s ease forwards;
+}
+
+@keyframes slap-move {
+  0% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -60%) scale(1.2); }
+  100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+.controls {
+  padding: 15px;
+  text-align: center;
+}
+
+.info {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.hint {
+  font-size: 0.9em;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.reset-row {
+  margin-top: 10px;
+}
+
+button.muted {
+  background: #eee;
+  border: 1px solid #bbb;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
   text-align: center;
 }
 
