@@ -17,7 +17,10 @@
     <div id="banana-stage">
       <div id="hand" class="hand hidden" aria-hidden="true"></div>
 
-      <svg id="banana" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="banana">
+      <svg id="banana" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="banana"
+           style="cursor:pointer;" pointer-events="bounding-box">
+        <!-- Transparent rectangle to make entire SVG clickable -->
+        <rect width="200" height="120" fill="transparent" pointer-events="all" />
         <defs>
           <filter id="bump" x="-50%" y="-50%" width="200%" height="200%">
             <feGaussianBlur in="SourceGraphic" stdDeviation="0.6" result="blur"/>
