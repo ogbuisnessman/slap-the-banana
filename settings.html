@@ -1,1 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Settings — Slap the Banana</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="topbar">
+    <div class="title">⚙ Settings</div>
+    <a class="shop-link" href="index.html">Back to Game</a>
+  </div>
+
+  <main style="text-align:center; padding:20px;">
+    <button id="reset-btn" class="shop-link" style="font-size:1.2em;">Reset Progress</button>
+  </main>
+
+  <script>
+    document.getElementById('reset-btn').addEventListener('click', () => {
+      localStorage.clear();
+      alert('Progress has been reset!');
+    });
+  </script>
+</body>
+</html>
 
