@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>🍌 Slap the Banana — Game</title>
+  <title>Slap the Banana — Game</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -10,7 +10,10 @@
   <div class="topbar">
     <div class="title">🍌 Slap the Banana 🍌</div>
     <div class="status">Bananas: <span id="banana-count">0</span> • Bananas per click: <span id="ppc">1</span></div>
-    <a class="shop-link" href="shop.html">Go to Shop</a>
+    <div class="nav-links">
+      <a class="shop-link" href="shop.html">Shop</a>
+      <a class="shop-link" href="settings.html">⚙ Settings</a>
+    </div>
   </div>
 
   <main id="game">
@@ -36,19 +39,13 @@
     </div>
 
     <div class="controls">
-      <!-- ✅ Non-selectable info box -->
-      <div class="game-info-box">
+      <div class="info-box">
         Total Bananas: <span id="banana-count-2">0</span><br>
-        Click the banana — different hands will slap it!<br>
-        Buy upgrades in the shop to increase bananas per click.
-      </div>
-      <div class="reset-row">
-        <button id="reset-btn" class="muted">Reset Progress</button>
+        Click the banana — different hands will slap it! Buy upgrades in the shop to increase bananas per click.
       </div>
     </div>
   </main>
 
-  <!-- ✅ Corrected script link -->
   <script src="script.js"></script>
 </body>
 </html>
