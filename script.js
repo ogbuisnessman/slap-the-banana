@@ -1,5 +1,5 @@
 (() => {
-  const bananaStageEl = document.getElementById('banana-stage');
+  const bananaEl = document.getElementById('banana');
   const bananaCountEl = document.getElementById('banana-count');
   const bananaCountEl2 = document.getElementById('banana-count-2');
   const ppcEl = document.getElementById('ppc');
@@ -43,8 +43,8 @@
     }, 300);
   }
 
-  // Click anywhere in banana-stage
-  bananaStageEl.addEventListener('click', () => {
+  // ✅ Clicking banana adds bananas
+  bananaEl.addEventListener('click', () => {
     bananas += ppc;
     save('bananas', bananas);
     updateUI();
