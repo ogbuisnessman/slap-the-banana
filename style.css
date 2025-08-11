@@ -1,15 +1,12 @@
+/* ✅ Global Styles */
 body {
-  font-family: sans-serif;
-  background: white;
-  color: black;
-  margin: 0;
-  padding: 0;body {
   margin: 0;
   font-family: sans-serif;
-  background: #fffbe7;
+  background: #fff44f; /* banana yellow */
   color: #333;
 }
 
+/* ✅ Top bar */
 .topbar {
   display: flex;
   justify-content: space-between;
@@ -37,6 +34,7 @@ body {
   color: #333;
 }
 
+/* ✅ Banana stage */
 #banana-stage {
   display: flex;
   justify-content: center;
@@ -49,8 +47,14 @@ body {
 #banana {
   width: 200px;
   height: auto;
+  transition: transform 0.1s ease;
 }
 
+#banana:active {
+  transform: scale(0.95);
+}
+
+/* ✅ Hand slap animation */
 .hand {
   position: absolute;
   width: 120px;
@@ -75,20 +79,23 @@ body {
   100% { transform: translate(-50%, -50%) scale(1); }
 }
 
+/* ✅ Controls and Info */
 .controls {
   padding: 15px;
   text-align: center;
 }
 
-.info {
-  font-size: 1.2em;
-  margin-bottom: 10px;
-}
-
-.hint {
-  font-size: 0.9em;
-  color: #555;
-  margin-bottom: 15px;
+/* Non-selectable info box */
+.game-info-box {
+  background-color: #ffe066;
+  border: 2px solid #d4b200;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 8px;
+  user-select: none; /* prevent highlighting */
+  font-size: 1rem;
+  font-weight: bold;
+  line-height: 1.4;
 }
 
 .reset-row {
@@ -102,56 +109,7 @@ button.muted {
   cursor: pointer;
 }
 
-  text-align: center;
-}
-
-.topbar {
-  background: #f9e79f;
-  padding: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-#banana-stage {
-  margin: 40px auto;
-  width: 300px;
-  height: 200px;
-  position: relative;
-}
-
-#banana {
-  width: 100%;
-  cursor: pointer;
-  transition: transform 0.1s ease;
-}
-
-#banana:active {
-  transform: scale(0.95);
-}
-
-.hand {
-  position: absolute;
-  width: 80px;
-  height: 80px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  pointer-events: none;
-}
-
-.hidden {
-  display: none;
-}
-
-.slap {
-  animation: slapAnim 0.3s ease;
-}
-
-@keyframes slapAnim {
-  0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-  100% { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
-}
-
+/* ✅ Shop styles */
 #shop-items {
   display: flex;
   flex-direction: column;
@@ -159,7 +117,6 @@ button.muted {
   padding: 20px;
 }
 
-/* NEW: Shop card container */
 .shop-card {
   border: 2px solid black;
   border-radius: 10px;
@@ -170,7 +127,6 @@ button.muted {
   justify-content: space-between;
 }
 
-/* NEW: Thumbnail styling for owned and next-to-buy */
 .shop-thumb {
   width: 80px;
   height: 50px;
@@ -182,7 +138,6 @@ button.muted {
   justify-content: center;
 }
 
-/* NEW: Silhouette styling for locked items */
 .silhouette {
   width: 80px;
   height: 50px;
@@ -198,7 +153,6 @@ button.muted {
   filter: grayscale(100%) opacity(0.4);
 }
 
-/* NEW: Buy button container */
 .buy-row button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
